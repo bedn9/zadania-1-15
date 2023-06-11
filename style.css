@@ -1,0 +1,7 @@
+textarea {
+  border: 1px solid #888; 
+   overflow: auto;
+   width: 500px;
+   height: 150px;
+}
+text {color: #3F51B5;}
