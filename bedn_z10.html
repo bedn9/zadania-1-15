@@ -1,0 +1,290 @@
+<html>
+
+<head>
+<title> z8 </title>
+<META HTTP-EQUIV="content-type" CONTENT="text/html; CHARSET=utf-8">
+</head>
+<body>
+Selektory są elementami arkusza CSS.
+
+<textarea>selektor {cecha: wartość; cecha: wartość; …..;}</textarea>
+
+Każda reguła odnosi się do konkretnego elementu (znacznika) i składa się z dwóch części:
+• selektora
+• deklaracji.
+Selektor określa do jakich elementów ma zostać przypisane formatowanie. np. p h1
+Deklaracja jest umieszczona w nawiasie klamrowym {...} i podaje to formatowanie.
+Każda deklaracja składa się z:
+• przynajmniej z jednego zespołu cecha lub inaczej własność albo właściwość (ang.
+property)
+• wartość (ang. value), przy czym można podać dowolną liczbę, rozdzielając kolejne
+znakiem średnika (;).
+Średnik na końcu deklaracji nie jest konieczny.
+Każda grupa elementów (znaczników np. <body> <p> <b>) ma określony zespół cech CSS,
+które można jej przypisać.
+Każda cecha ma ściśle wyszczególnioną listę wartości, które może przyjąć.
+Na przykład: cecha text-align (wyrównanie tekstu) może być przypisana tylko i wyłącznie do
+elementów blokowych, ponieważ podanie jej dla elementów wyświetlanych w linii nie
+miałoby sensu. Z drugiej strony cecha ta może przyjmować tylko wartości takie jak: left,
+right, center, justify. Przypisanie do niej np. wartości koloru nie miałoby sensu.
+Przykład1:
+p { color: red; }
+selektorem jest znacznik p,
+deklaracja ma postać { color: red }.
+cechą jest color,
+wartością red.
+Przykład2:
+p b { color: red; background-color: yellow }
+Selektorem jest zestawienie znaczników p b.
+Deklaracja zawiera dwa zespoły cecha-wartość.
+Uwaga:
+W MSIE 8.0 i starszych jeden plik arkusza CSS może zawierać tylko 4095 selektorów, przy
+czym w listach każdy selektor liczy się osobno - następne deklaracje zostaną pominięte!
+W przypadku przekroczenia tej granicy, jedynym rozwiązaniem jest podział arkusza CSS na
+kilka osobnych plików, ale nie więcej niż 31.
+
+Rodzaje selektorów
+1)selektor prosty (selektor typu)
+2)selektor uniwersalny
+3)selektor potomka
+4)selektor dziecka
+5)selektor braci
+6)selektor atrybutu
+a)prosty selektor atrybutu
+b)selektor atrybutu o określonej wartości
+c)selektor atrybutu zawierający określony wyraz
+7)selektory specjalne
+a)selektor klasy
+b)pseudoklasyk
+c)selektory pseudoelementów
+-pierwsza linia
+-pierwsza litera
+Rodzaj pierwszy
+Selektory proste nazywany inaczej selektor typu
+p
+ {
+ color:red;
+ font-size:14pt;
+ }
+Selektorem prostym jest znaczniki języka XHTML/HTML (np. p, h3, table, img) przypisany
+do elementu, który chcesz w danym momencie formatować.
+Styl zdefiniowany dla przykładowego selektora p będzie odnosił się wyłącznie do
+akapitów zamkniętych w znacznikach <p></p> i nie będzie wpływał na pozostałe elementy
+strony WWW.
+Rodzaj drugi
+Selektor uniwersalny
+Składnia teoretyczna:
+
+<textarea>* { cecha: wartość }</textarea>
+
+Cecha (ang. property) oraz wartość (ang. value) określają atrybuty elementu.
+Selektor taki pozwala ustalić określone atrybuty dla wszystkich elementów strony, a więc dla
+różnych selektorów typu. Możemy za pomocą tej komendy nadać to samo formatowanie dla
+wszystkich elementów na całej stronie, niezależnie od ich typu (p, h1, li itd.).
+Uwaga1
+Niestety jego działanie nie zawsze jest jednoznaczne, dlatego dużo bezpieczniej jest używać
+selektora typu dla elementu body, chyba że zastosujemy to polecenie w odniesieniu do klasy
+selektorów.
+Uwaga2
+Jeśli selektor uniwersalny chcemy zastosować do selektora innego niż selektor typu (w
+połączeniu z selektorami: atrybutów, specjalnymi, pseudoelementów lub pseudoklas), to
+gwiazdkę można pominąć.
+Przykład
+Zdarza się, że zachodzi potrzeba zdefiniowania jakiegoś typu formatowania w ten sposób, aby
+zadziałał on na cały dokument. Bardzo dobrym przykładem takiej sytuacji może być tło, które
+zazwyczaj powinno być identyczne dla całego dokumentu. Odpowiedni styl może przyjąć
+następującą postać:
+
+<textarea>body
+{
+color:red; /* kolor czcionki */
+font-size:14pt; /* wielkość czcionki */
+}
+</textarea>
+
+inny sposób zamiast selektora uniwersalnego stosujemy znak *
+
+<textarea>*
+{
+background-color:white; /* kolor tła */
+}
+</textarea>
+
+Rodzaj trzeci selektora
+Selektor potomka
+Przy użyciu selektora potomka można formatować elementy, które sa zawarte wewnątrz
+innych znaczników, czyli leżą niżej w hierarchii drzewa dokumentu.
+Składnia teoretyczna:
+
+<textarea>przodek1 przodek2 ... potomek { cecha: wartość }</textarea>
+
+gdzie;
+"przodek1, przodek2,..." oraz "potomek" (wielokropek należy pominąć!) są selektorami
+typu, przy czym przodek leży wyżej w hierarchii drzewa dokumentu
+Natomiast wyrazy "cecha" oraz "wartość" określają atrybuty elementu.
+Selektor potomka pozwala nadać atrybuty elementom, które leżą niżej w hierarchii drzewa
+dokumentu (zawierają się w innych zewnętrznych znacznikach). Dzięki temu możemy
+zmienić typ formatowania tylko dla określonych elementów, które są podrzędne w stosunku
+do innych (przodków). Potomek nie musi leżeć bezpośrednio wewnątrz znacznika przodka.
+Może być zawarty jeszcze w innych znacznikach, które z kolei zawierają się w rodzicu. Nie
+jest wtedy konieczne podawanie w deklaracji wszystkich rodziców, a jedynie przodka i
+potomka.
+Selektor taki jest szczególnie przydatny, dla określenia wyglądu odsyłaczy wewnątrz bloku,
+ponieważ jeśli nie określimy dla nich tzw. pseudoklas odsyłaczowych, nie odziedziczą one
+formatowania po przodkach.
+W arkuszu stylów strony została umieszczona następująca reguła:
+p b { color: red } czyli definiowanie potomka.
+
+<textarea>
+
+<html>
+ <head>
+<title>styl wpisany</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+p b { color: red }
+</style>
+ </head>
+<body>
+ <p>Dzięki temu, jeśli wewnątrz znacznika p (akapit)<br>
+ <b> znajdzie się znacznik b (czyli pogrubienie tekstu), to zostanie on automatycznie </b><br>
+napisany czcionką koloru czerwonego.</p>
+ </body>
+</html>
+
+</textarea>
+
+Wygląd ekranu:
+Dzięki temu, jeśli wewnątrz znacznika p (akapit)
+znajdzie się znacznik b (czyli pogrubienie tekstu), to zostanie on automatycznie
+napisany czcionką koloru czerwonego
+
+Rodzaj czwarty selektora
+Selektor dziecka
+Selektor dziecka służy do definiowania elementów, które znajdują się o jeden rząd niżej w
+hierarchii drzewa dokumentów
+
+<textarea>rodzic > dziecko {właściwość: wartość}</textarea>
+
+gdzie symbol „>” oznacza bezpośredni związek między elementami.
+Przykład opisanego selektora znajduje się poniżej.
+
+
+<textarea>
+
+p > span
+{
+font-style:italic;
+text-decoration:underline;
+color:green;
+}
+
+</textarea>
+
+Działanie →definicji stylu opis:
+Dany styl zadziała w przypadku, gdy wewnątrz bloku tekstu zostanie umieszczony znacznik
+<span></span>.
+Realizacja:
+
+<textarea><p>Dowolny tekst, w którym widać efekt działania <span>selektora dziecka</span>.</p>
+<span>Tekst zamknięty wewnątrz znacznika span, który nie jest formatowany za pomocą selektora dziecka.</span></textarea>
+
+Działanie →opis tekstu w ramce powyżej:
+<span></ span > jest „dzieckiem”
+<p></p> jest „rodzicem”
+pierwsza linia
+formatowaniu zostanie poddany tylko tekst znajdujący się wewnątrz znacznika
+<span></span>, który z kolei ograniczony jest przez <p></p>,
+druga linia
+natomiast inne elementy, które nie są „dziećmi” <p></p>, pomimo że również zamknięte są
+w <span></span>, pozostaną bez zmian.
+
+Rodzaj piąty selektora
+Selektora "rodzeństwa" (braci)
+
+<textarea>brat1 + brat2 {właściwość: wartość}</textarea>
+
+Zastosowanie selekora rodzeństwa można przypisać styl elementowi bezpośrednio
+sąsiadującemu z innymi. By warunek został spełniony, oba selektory muszą mieć wspólnego
+„rodzica”.
+Przykładem takiego selektora jest poniższy listing.
+definicja:
+
+<textarea>
+p + span
+ {
+ font-style:italic;
+ text-decoration:underline;
+ color:green;
+ }
+</textarea>
+
+znaczniki <p> oraz <span> podczas realizacji muszą ze sobą sąsiadować.
+realizacja:
+
+<textarea>
+<p>To jest tekst akapitu.</p> <span>A tutaj działa selektor rodzeństwa.</span>
+<span>Natomiast ten tekst, pomimo że jest zamknięty w span, już nie jest formatowany, bo
+nie sąsiaduje bezpośrednio z akapitem.</span>
+</textarea>
+
+W powyższego kodu wynika, iż są dwa bloki <span> :
+pierwszy blok span →blok tekstu ujęty w <p> sąsiaduje ze znacznikiem <span>, <span>
+przejmuje formatowanie od <p>,
+drugi znacznik → <span> bezpośrednio nie sąsiaduje z <p> i <span> nie przejmuje
+formatowanie od <p>.
+działanie:
+
+<textarea>To jest tekst akapitu. A tutaj działa selektor rodzeństwa. Natomiast ten tekst, pomimo że jest
+zamknięty w span, już nie jest formatowany, bo nie sąsiaduje bezpośrednio z akapitem</textarea>
+
+Rodzaj szósty selektora
+Prosty selektor atrybutu
+Składnia teoretyczna:
+
+<textarea>selektor[atrybut] { cecha: wartość }</textarea>
+
+Selektorem może być dowolny znacznik, np. ( p – akapit ), ( h1 – nagłówek ), (td - komórka
+tabeli).
+Atrybut oznacza konkretny parametr nadany znacznikowi z poziomu języka (X)HTML.
+Natomiast "cecha" oraz "wartość" określają atrybuty elementu nadane poprzez style i
+zostaną opisane w dalszych rozdziałach.
+Polecenie to może zostać wykorzystane dla elementów, którym z poziomu (X)HTML został
+nadany określony atrybut (przy czym jego wartość nie ma znaczenia).
+uwaga
+W języku XHTML wszystkie atrybuty w selektorach muszą być pisane małymi literami.
+Przykład1 - krótki:
+
+<textarea>p[title] { color: red }</textarea>
+
+to każdy akapit, któremu został nadany atrybut title="...", powinien mieć kolor czerwony:
+Przykład2 - krótki:
+
+<textarea>p[title][lang] { color: red }</textarea>
+
+Dozwolone jest podanie kilku atrybutów. Wtedy element musi posiadać wszystkie z nich, aby
+otrzymał formatowanie:
+Przykład - całościowy:
+
+<textarea>
+
+<html>
+<head>
+ <title>prosty selektor atrybutu</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <style type="text/css">
+ p[align]{ font-size: 20pt; color: green; }
+ </style>
+</head>
+<body>
+ <p align="center">wyśrodkowanie 20pt i kolor zielony</p><br>
+ <p align="right">do prawej 20pt i kolor zielony </p><br>
+ <p>Nie ma formatowania bo nie ma atrybutu align </p><br>
+</body>
+</html>
+
+</textarea>
+
+</body>
+
+</html> 
