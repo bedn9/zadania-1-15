@@ -1,0 +1,54 @@
+<html>
+
+<head>
+<title>       z7                     </title>
+<META HTTP-EQUIV="content-type" CONTENT="text/html; CHARSET=utf-8">
+</head>
+
+<body>
+Styl lokalny pozwala na nadanie formatowania konkretnemu pojedynczemu elementowi
+strony. Jest wstawiany w tej samej linii, w której znajduje się element formatowany.
+O tym, który to będzie element, decyduje słowo kluczowe "selektor".
+Składnia teoretyczna:
+<textarea><selektor style="cecha1: wartość1; cecha2: wartość2...">...</selektor></textarea>
+lub inaczej
+<textarea><selektor style="nasze style">treść bloku</selektor></textarea>
+Selektorem może być praktycznie dowolny znacznik, np. p (akapit), h1 (nagłówek), td
+(komórka tabeli) i inne. To właśnie elementom znajdującym się pomiędzy tymi znacznikami,
+nadajemy atrybuty formatowania.
+Jako "cecha" czy inaczej własność bądź właściwość (ang. "property") należy wpisać o jakie
+konkretnie atrybuty formatowania nam chodzi (np. kolor tekstu - color).
+Jednemu selektorowi możemy nadać kilka atrybutów (cech). Są one wtedy rozdzielone
+średnikami.
+Jako wyraz "wartość" (w deklaracji stylu) wpisujemy dokładną wartość atrybutu (np. dla
+koloru tekstu będzie to: red, blue czy też #31F4A5 itd.). Wartość zależy ściśle od cechy, po
+której stoi w deklaracji.
+Opis wszystkich cech później.
+Przykład:
+<textarea><p style="color: red">To jest kolor tekstu na czerwono</p></textarea>
+Uwaga:
+Styl wpisany jest wprowadzony w wybranym znaczniku i nie ma wpływu na pozostałe
+znaczniki.
+<textarea>
+
+<html>
+<head>
+<title>styl wpisany</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!-- styl wpisany -->
+</head>
+<body bgcolor="red">
+ <p style="font-family: Arial, Helvetica, sans-serif; font-size: 40px;">
+ styl wpisany wielkosc 40 pikseli</p>
+ <p>styl wpisany wielościa standardowa z użyciem znacznika -->p</p>
+ <span style="font-family: Arial, Helvetica, sans-serif; font-size: 25px;">
+ styl wpisany wielkosc 25 pikseli</span> <br>
+ <span>styl wpisany wielością standardową-->span</span>
+</body>
+</html>
+
+</textarea>
+
+</body>
+
+</html>
